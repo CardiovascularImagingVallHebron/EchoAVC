@@ -386,17 +386,12 @@ def build_dataframe_and_splits():
     df = df[~df["AVCS_CT"].isna()].copy()
 
     # Targets
-    df["y_reg"] = (df["AVCS_CT"] / 5000.0).clip(0, None)  # regresión escalada
+    df["y_reg"] = (df["AVCS_CT"] / 5000.0).clip(0, None)  # regression scale
 
     df["y_bin0"]    = (df["AVCS_CT"] > 0).astype(int)
 
     # Define splits:
-    df["split_set"] = "train"  # por defecto
-
-
-    # 2) test: en results con split==1 o 2
-    test_mask = df["split"].isin([1,2])
-    df.loc[(df["split_set"] != "val") & test_mask, "split_set"] = "test"
+    df["split_set"] = "test"  # defect
 
     # Report
     log(df["split_set"].value_counts())
