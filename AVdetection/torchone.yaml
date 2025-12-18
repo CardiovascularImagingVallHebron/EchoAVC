@@ -104,4 +104,4 @@ dependencies:
       - tzdata==2025.2
       - urllib3==2.5.0
       - xarray==2025.9.0
-prefix: e:\25366074H\AppData\Local\anaconda3\envs\torchone
+
