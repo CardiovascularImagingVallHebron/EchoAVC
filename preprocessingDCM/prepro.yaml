@@ -48,4 +48,3 @@ dependencies:
       - tifffile==2025.10.16
       - tqdm==4.67.1
       - tzdata==2025.2
-prefix: e:\25366074H\AppData\Local\anaconda3\envs\prepro
