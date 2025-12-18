@@ -38,6 +38,11 @@ cd EchoAVC
    - `vids_cropped`: Videos cropped to the aortic valve cone at original resolution.
 4. Run the preprocessing script (see `preprocessingDCM` for specific instructions).
 
+For the following steps, create the conda environment from `AVdetection/torchone.yaml`:
+```bash
+conda env create -f AVdetection/torchone.yaml
+conda activate prepro
+```
 ### 3. Aortic Valve Detection
 
 1. In `AVdetection/inference_avcrop.py`, set `base_dirs` to the `vids_cropped` folder created in the previous step.
