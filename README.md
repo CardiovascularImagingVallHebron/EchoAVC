@@ -1,6 +1,6 @@
 # EchoAVC
 
-![EchoAVC Overview](docs/echoavc-overview.png)
+![EchoAVC Overview](echoavc_twostages.png)
 
 EchoAVC is a framework for accurate, non-invasive detection and quantification of aortic valve calcification (AVC) using echocardiographic videos.
 
