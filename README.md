@@ -68,8 +68,8 @@ For the following steps, create the conda environment from `AVdetection/torchone
 Construct a matrix for each study by concatenating:
 - 768-dimensional embeddings (from Step 1)
 - Video ID (1 dimension)
-- Video quality score from EchoQuality (1 dimension)
-- View identifier as one-hot encoded ("PSAX": 0.0, "PLAX": 1.0, "3CH": 2.0) (3 dimensions)
+- Video quality score from EchoQuality (3 dimension)
+- View identifier as one-hot encoded ("PSAX": 0.0, "PLAX": 1.0, "3CH": 2.0) (2 dimensions: view+probability)
 
 This results in **774-dimensional feature vectors per video**. Concatenate up to 30 videos per study, creating **30×774 matrices** for each study.
 
