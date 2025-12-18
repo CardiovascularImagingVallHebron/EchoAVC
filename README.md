@@ -1,6 +1,8 @@
-# EchoAVC
+# EchoAVC: Artificial intelligence for aortic valve calcium score quantification by echocardiography
 
-EchoAVC is a framework for non-invasive detection and quantification of aortic valve calcification (AVC). Preprint details: ...
+EchoAVC is a framework for non-invasive detection and quantification of aortic valve calcification (AVC) in echocardiography videos. 
+
+Preprint details: ...
 
 ![EchoAVC Overview](echoavc_twostages.png)
 
