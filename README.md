@@ -7,7 +7,7 @@ EchoAVC is a framework for accurate, non-invasive detection and quantification o
 ## Repository Structure
 
 - **preprocessingDCM**: Converts echocardiography studies from DICOM (DCM) format to AVI. Requires a source folder (`root_folder`) containing DICOM files and an output folder (`root_out_folder`) where the converted AVI files will be saved. Use the conda environment defined in `prepro.yaml`.
-- **AVdetection**: Detects the aortic valve (AV) in echocardiography images.
+- **AVdetection**: Detects the aortic valve (AV) in echocardiography images. Use the conda environment defined in `torchone.yaml` (same for EchoQuality & EchoAVC).
 - **EchoQuality**: Classifies echocardiography quality. The model is fine-tuned from [CarDS-Yale/PanEcho](https://github.com/CarDS-Yale/PanEcho), and part of the code is adapted from that project.
 - **EchoAVC**: Identifies and quantifies aortic valve calcium. Feature extraction builds on [CarDS-Yale/PanEcho](https://github.com/CarDS-Yale/PanEcho); to aggregate video-level features at the study level, a transformer-based architecture is used.
 
