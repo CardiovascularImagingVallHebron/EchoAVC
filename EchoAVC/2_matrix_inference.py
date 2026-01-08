@@ -822,7 +822,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = ModelDiagnostic(d_in=EMB_D).to(device)
 
-    best_path = os.path.join(r'results\best_model.pt')
+    best_path = os.path.join(r'results\aggregator_model.pt')
 
     # Carga best y eval en VAL y TEST para plots requeridos
     model.load_state_dict(torch.load(best_path, map_location=device))
