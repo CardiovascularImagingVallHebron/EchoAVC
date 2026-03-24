@@ -103,7 +103,7 @@ def run(root_dir: str, dest_root: str):
         fc_dropout=0.4 
         # hidden_units=1536
     )    
-    checkpoint_path = r'data\chkpt_best_study_AoCalcium-score_fold5.pt'
+    checkpoint_path = r'data\echoavc_feature_extraction.pt'
     chkpt = torch.load(checkpoint_path, map_location='cpu')
     filtered_state_dict = {}
 

@@ -105,7 +105,7 @@ if __name__ == "__main__":
         # Convert the DataFrame to a set for easy comparison
         processed_videos = set(df_results.apply(lambda row: f"{row['patient']}/{row['file']}", axis=1))
 
-        probs_view = pd.read_csv('probs_mayo_v2.csv')
+        probs_view = pd.read_csv('probs.csv')
 
         probs_view = probs_view[~probs_view['fname'].isin(df_results['file_no_ext'])]
 
