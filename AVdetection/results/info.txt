@@ -1,1 +1,0 @@
-Model Architecture: FasterRCNN-ResNet50-FPN (COCO_V1 pretrain) https://arxiv.org/abs/1506.01497
