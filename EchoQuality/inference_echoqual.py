@@ -57,9 +57,9 @@ def main(args):
     # Load test dataset
     print('Preparing test dataset...')
 
-    test_df = pd.read_excel('content/test.xlsx') #COLOR
+    test_df = pd.read_excel('content/20260227_mimics_iv_quality.xlsx') #COLOR
     
-    test_df['FileName'] = test_df['Period'].astype(str) + '-' + test_df['FileName'].astype(str)
+    test_df['FileName'] = test_df['Period'].astype(str) + '___' + test_df['FileName'].astype(str)
 
     # Visualize the distribution in each fold
     fold = 0
