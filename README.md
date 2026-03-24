@@ -7,8 +7,6 @@ EchoAVC is a framework for accurate, non-invasive detection and quantification o
 ## Repository Structure
 
 - **preprocessingDCM**: Converts echocardiography studies from DICOM (DCM) format to AVI. Requires a source folder (`root_folder`) containing DICOM files and an output folder (`root_out_folder`) where the converted AVI files will be saved. Use the conda environment defined in `prepro.yaml`.
-- **AVdetection**: Detects the aortic valve (AV) in echocardiography images. Use the conda environment defined in `torchone.yaml` (same for EchoQuality & EchoAVC).
-- **EchoQuality**: Classifies echocardiography quality. The model is fine-tuned from [CarDS-Yale/PanEcho](https://github.com/CarDS-Yale/PanEcho), and part of the code is adapted from that project.
 - **EchoAVC**: Identifies and quantifies aortic valve calcium. Feature extraction builds on [CarDS-Yale/PanEcho](https://github.com/CarDS-Yale/PanEcho); to aggregate video-level features at the study level, a transformer-based architecture is used.
 
 ## Model Weights and Repositories
@@ -20,6 +18,7 @@ EchoAVC is a framework for accurate, non-invasive detection and quantification o
 ## Getting Started
 
 ### 1. Clone the repository:
+
 ```bash
 git clone https://github.com/CardiovascularImagingVallHebron/EchoAVC.git
 cd EchoAVC
@@ -39,10 +38,12 @@ cd EchoAVC
 4. Run the preprocessing script (see `preprocessingDCM` for specific instructions).
 
 For the following steps, create the conda environment from `AVdetection/torchone.yaml`:
-   ```bash
-   conda env create -f AVdetection/torchone.yaml
-   conda activate prepro
-   ```
+
+```bash
+conda env create -f AVdetection/torchone.yaml
+conda activate prepro
+```
+
 ### 3. Aortic Valve Detection
 
 Follow the manual usage of the [AV Detector](https://github.com/CardiovascularImagingVallHebron/AoVdetector) repository.
@@ -62,6 +63,7 @@ Follow the manual usage of the [EchoQuality](https://github.com/perolope/EchoQua
 #### Step 2: Build Study-Level Matrices
 
 Construct a matrix for each study by concatenating:
+
 - 768-dimensional embeddings (from Step 1)
 - Video ID (1 dimension)
 - Video quality score from EchoQuality (3 dimension)
