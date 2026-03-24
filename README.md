@@ -11,11 +11,11 @@ EchoAVC is a framework for accurate, non-invasive detection and quantification o
 - **EchoQuality**: Classifies echocardiography quality. The model is fine-tuned from [CarDS-Yale/PanEcho](https://github.com/CarDS-Yale/PanEcho), and part of the code is adapted from that project.
 - **EchoAVC**: Identifies and quantifies aortic valve calcium. Feature extraction builds on [CarDS-Yale/PanEcho](https://github.com/CarDS-Yale/PanEcho); to aggregate video-level features at the study level, a transformer-based architecture is used.
 
-## Model Weights
+## Model Weights and Repositories
 
-- EchoQuality weights: https://huggingface.co/perolope/EchoQuality  
-- AV detection weights: https://huggingface.co/perolope/AVdetector  
-- EchoAVC weights: https://huggingface.co/perolope/EchoAVC
+- EchoQuality: [Weights](https://huggingface.co/perolope/EchoQuality) & [Repository](https://github.com/perolope/EchoQuality)
+- AV detection: [Weights](https://huggingface.co/perolope/AVdetector) & [Repository](https://github.com/CardiovascularImagingVallHebron/AoVdetector)
+- EchoAVC: [Weights](https://huggingface.co/perolope/EchoAVC) Repository (Here!)
 
 ## Getting Started
 
@@ -45,15 +45,11 @@ For the following steps, create the conda environment from `AVdetection/torchone
    ```
 ### 3. Aortic Valve Detection
 
-1. In `AVdetection/inference_avcrop.py`, set `base_dirs` to the `vids_cropped` folder created in the previous step.
-2. Prepare a view probability file (`probs.csv`) similar to the example provided in the repository. This file contains the probability of each view being the aortic valve view.
-3. Set `output_csv` to specify the output file path. The script will return the bounding box coordinates (in 256x256 resolution) of the aortic valve across different frames.
-4. Run the inference script to detect aortic valve locations.
+Follow the manual usage of the [AV Detector](https://github.com/CardiovascularImagingVallHebron/AoVdetector) repository.
 
 ### 4. Echo Quality Assessment
 
-1. Prepare an input file similar to `EchoQuality/content/test.xlsx` with paths to videos in the `vids_resized` folder (full cone videos, not valve-cropped).
-2. Run the quality classification script, which will output video-level quality results to a specified file.
+Follow the manual usage of the [EchoQuality](https://github.com/perolope/EchoQuality) repository.
 
 ### 5. Aortic Valve Calcification (AVC) Quantification
 
