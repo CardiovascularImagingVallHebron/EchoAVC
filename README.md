@@ -15,7 +15,7 @@ EchoAVC is a framework for accurate, non-invasive detection and quantification o
 
 - EchoQuality: [Weights](https://huggingface.co/perolope/EchoQuality) & [Repository](https://github.com/perolope/EchoQuality)
 - AV detection: [Weights](https://huggingface.co/perolope/AVdetector) & [Repository](https://github.com/CardiovascularImagingVallHebron/AoVdetector)
-- EchoAVC: [Weights](https://huggingface.co/perolope/EchoAVC) Repository (Here!)
+- EchoAVC: [Weights](https://huggingface.co/perolope/EchoAVC) & Repository (Here!)
 
 ## Getting Started
 
