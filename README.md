@@ -80,5 +80,3 @@ This results in **774-dimensional feature vectors per video**. Concatenate up to
    - Directory path containing the study-level matrices created in Step 2.
    - Study information file similar to `EchoAVC/content/info_csv.csv`.
 3. The script will output AVC quantification results at the study level.
-
-### 6. Download model weights from the links above as needed for each module.
