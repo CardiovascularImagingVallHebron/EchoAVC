@@ -11,7 +11,7 @@ EchoAVC is a framework for accurate, non-invasive detection and quantification o
 
 ## Model Weights and Repositories
 
-- EchoQuality: [Weights](https://huggingface.co/perolope/EchoQuality) & [Repository](https://github.com/perolope/EchoQuality)
+- EchoQuality: [Weights](https://huggingface.co/perolope/EchoQuality) & [Repository](https://github.com/CardiovascularImagingVallHebron/EchoQuality)
 - AV detection: [Weights](https://huggingface.co/perolope/AVdetector) & [Repository](https://github.com/CardiovascularImagingVallHebron/AoVdetector)
 - EchoAVC: [Weights](https://huggingface.co/perolope/EchoAVC) & Repository (Here!)
 
@@ -50,7 +50,7 @@ Follow the manual usage of the [AV Detector](https://github.com/CardiovascularIm
 
 ### 4. Echo Quality Assessment
 
-Follow the manual usage of the [EchoQuality](https://github.com/perolope/EchoQuality) repository.
+Follow the manual usage of the [EchoQuality](https://github.com/CardiovascularImagingVallHebron/EchoQuality) repository.
 
 ### 5. Aortic Valve Calcification (AVC) Quantification
 
