@@ -5,3 +5,5 @@ quality.csv
 view.csv
 *.npy
 *.pt
+*.pyc
+EchoAVC\__pycache__
