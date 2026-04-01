@@ -1,2 +1,7 @@
 /EchoQuality/
 /AVdetection/
+/old_files/
+quality.csv
+view.csv
+*.npy
+*.pt

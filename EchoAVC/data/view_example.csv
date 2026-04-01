@@ -1,0 +1,4 @@
+study,video,view,view_prob
+studyname,filename,PLAX,0.999
+studyname,filename,PSAX,0.999
+studyname,filename,A3C,0.999
