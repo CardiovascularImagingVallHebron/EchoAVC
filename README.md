@@ -6,7 +6,7 @@ EchoAVC is a framework for accurate, non-invasive detection and quantification o
 
 ---
 
-![EchoAVC Overview](echoavc_twostages.png)
+![EchoAVC Overview](EchoAVC/content/echoavc_twostages.png)
 
 ## Repository Structure
 
