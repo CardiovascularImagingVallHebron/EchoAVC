@@ -14,7 +14,6 @@ def run(
     csv_quality: str,
     csv_view: str,
     dest_root: str,
-    tasks_path: str,
     checkpoint_path: str,
     keep_temp: bool = False,
 ):
@@ -27,12 +26,12 @@ def run(
         raise FileNotFoundError(f"csv_quality does not exist: {csv_quality}")
     if not os.path.isfile(csv_view):
         raise FileNotFoundError(f"csv_view does not exist: {csv_view}")
-    if not os.path.isfile(tasks_path):
-        raise FileNotFoundError(f"tasks_path does not exist: {tasks_path}")
     if not os.path.isfile(checkpoint_path):
         raise FileNotFoundError(f"checkpoint_path does not exist: {checkpoint_path}")
 
     ensure_dir(dest_root)
+    
+    tasks_path = r'EchoAVC\content\tasks_v6.npy'
 
     df_meta = load_metadata(csv_quality, csv_view)
     studies_meta = set(df_meta["study"].unique())
@@ -111,7 +110,6 @@ if __name__ == "__main__":
     csv_quality = r'EchoAVC\data\quality.csv'
     csv_view = r'EchoAVC\data\view.csv'
     dest_root = r'EchoAVC\matrix_out'
-    tasks_path = r'EchoAVC\content\tasks_v6.npy'
     checkpoint_path = r'EchoAVC\data\echoavc_feature_extraction.pt'
     keep_temp = 0
 
@@ -120,7 +118,6 @@ if __name__ == "__main__":
         csv_quality=csv_quality,
         csv_view=csv_view,
         dest_root=dest_root,
-        tasks_path=tasks_path,
         checkpoint_path=checkpoint_path,
         keep_temp=keep_temp,
     )

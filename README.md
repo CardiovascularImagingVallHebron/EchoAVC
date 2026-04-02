@@ -64,16 +64,14 @@ conda activate torchone
    - `csv_quality`: CSV with video-level quality predictions
    - `csv_view`: CSV with video-level view predictions
    - `dest_root`: output directory where study matrices will be saved
-   - `tasks_path`: PanEcho task definition file
    - `checkpoint_path`: **`echoavc_feature_extraction.pt` (download from the provided HuggingFace link)**
 3. The script:
-   - Extracts PanEcho embeddings from each video
+   - Extracts EchoAVC embeddings from each video
    - Builds fixed-size matrices using metadata from both CSVs
 
 **Note:** Example CSV files are provided in `EchoAVC/data`.
 
 4. Matrix Format
-
    Each video clip is converted into a **774-dimensional feature vector** composed of:
    - 768 PanEcho embedding features
    - 1 video identifier
