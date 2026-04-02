@@ -47,7 +47,7 @@ Follow the manual usage of the [EchoQuality](https://github.com/CardiovascularIm
 
 ### 5. Aortic Valve Calcification (AVC) Quantification
 
-### Step 0: Environment installation
+#### Step 0: Environment installation
 
 For the following steps, create the conda environment from `EchoAVC\content\torchone.yaml`:
 
