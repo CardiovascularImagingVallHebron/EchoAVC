@@ -33,16 +33,9 @@ cd EchoAVC
    ```
 2. Prepare your input folder (`root_folder`) containing DICOM files.
 3. Specify an output folder (`root_out_folder`) where converted AVI files will be saved. Inside this folder, the script will create:
-   - `vids_resized`: Videos cropped to the aortic valve cone and resized to 256x256.
-   - `vids_cropped`: Videos cropped to the aortic valve cone at original resolution.
+   - `vids_resized`: Videos cropped to the echo cone and resized to 256x256.
+   - `vids_cropped`: Videos cropped to the echo cone at original resolution.
 4. Run the preprocessing script (see `preprocessingDCM` for specific instructions).
-
-For the following steps, create the conda environment from `AVdetection/torchone.yaml`:
-
-```bash
-conda env create -f AVdetection/torchone.yaml
-conda activate prepro
-```
 
 ### 3. Aortic Valve Detection
 
@@ -54,27 +47,67 @@ Follow the manual usage of the [EchoQuality](https://github.com/CardiovascularIm
 
 ### 5. Aortic Valve Calcification (AVC) Quantification
 
-#### Step 1: Video Feature Extraction
+### Step 0: Environment installation
 
-1. Run `EchoAVC/1_video_feature_extraction.py`.
-2. Set `root_dirs` to the directory containing valve-cropped videos (from `vids_cropped`).
-3. The script will output embeddings to `dest` folder: `data/row_pretrain_embeddings` containing 768-dimensional embeddings for each video.
+For the following steps, create the conda environment from `EchoAVC\content\torchone.yaml`:
 
-#### Step 2: Build Study-Level Matrices
+```bash
+conda env create -f EchoAVC\content\torchone.yaml
+conda activate torchone
+```
 
-Construct a matrix for each study by concatenating:
+#### Step 1: Build Study-Level Matrices from Videos
 
-- 768-dimensional embeddings (from Step 1)
-- Video ID (1 dimension)
-- Video quality score from EchoQuality (3 dimension)
-- View identifier as one-hot encoded ("PSAX": 0.0, "PLAX": 1.0, "3CH": 2.0) (2 dimensions: view+probability)
+1. Run `EchoAVC/1_video_to_matrix.py`.
+2. Set the following paths inside the script:
+   - `src_root`: directory containing study subfolders with valve-cropped `.avi` videos (`src_root/study/*.avi`)
+   - `csv_quality`: CSV with video-level quality predictions
+   - `csv_view`: CSV with video-level view predictions
+   - `dest_root`: output directory where study matrices will be saved
+   - `tasks_path`: PanEcho task definition file
+   - `checkpoint_path`: **`echoavc_feature_extraction.pt` (download from the provided HuggingFace link)**
+3. The script:
+   - Extracts PanEcho embeddings from each video
+   - Builds fixed-size matrices using metadata from both CSVs
 
-This results in **774-dimensional feature vectors per video**. Concatenate up to 30 videos per study, creating **30×774 matrices** for each study.
+**Note:** Example CSV files are provided in `EchoAVC/data`.
 
-#### Step 3: Study-Level Inference
+4. Matrix Format
 
-1. Run `EchoAVC/2_matrix_inference.py`.
-2. Provide:
-   - Directory path containing the study-level matrices created in Step 2.
-   - Study information file similar to `EchoAVC/content/info_csv.csv`.
-3. The script will output AVC quantification results at the study level.
+   Each video clip is converted into a **774-dimensional feature vector** composed of:
+   - 768 PanEcho embedding features
+   - 1 video identifier
+   - 3 quality prediction values
+   - 1 numeric view label
+   - 1 view probability
+
+   Up to **30 rows** are selected per study, producing matrices of shape:
+
+   **`30 × 774`**
+
+   Matrices are saved as `.npy` files in: dest_root/<study>/matrixXXX.npy
+
+   The number of matrices per study is dynamic, depending on the number of available clips.
+
+---
+
+#### Step 2: Study-Level EchoAVC aggregator
+
+1. Run `EchoAVC/2_matrix_inference_direct.py`.
+2. Set the following paths inside the script:
+   - `matrix_root`: directory containing matrices generated in Step 1
+   - `model_path`: **`aggregator_model.pt` (download from the same HuggingFace link)**
+   - `out_csv`: output CSV path for study-level predictions
+3. The script:
+   - Loads all matrices
+   - Runs inference using the aggregation model
+   - Aggregates predictions at study level
+
+4. Outputs:
+   - **Study-level predictions** → `EchoAVC_predictions.csv`
+   - **Matrix-level predictions** → `EchoAVC_predictions_by_matrix.csv`
+
+Each study-level prediction includes:
+
+- `EchoAVC_PRES`: probability of EchoAVC presence
+- `EchoAVC`: continuous EchoAVC score prediction
