@@ -2,6 +2,10 @@
 
 EchoAVC is a framework for accurate, non-invasive detection and quantification of aortic valve calcification (AVC) using echocardiographic videos.
 
+[[Preprint](https://www.medrxiv.org/content/10.64898/2025.12.26.25343075v1)]
+
+---
+
 ![EchoAVC Overview](echoavc_twostages.png)
 
 ## Repository Structure
@@ -45,7 +49,7 @@ Follow the manual usage of the [AV Detector](https://github.com/CardiovascularIm
 
 Follow the manual usage of the [EchoQuality](https://github.com/CardiovascularImagingVallHebron/EchoQuality) repository.
 
-### 5. Aortic Valve Calcification (AVC) Quantification
+### 5. Echocardiography Aortic Valve Calcification (EchoAVC) Quantification
 
 #### Step 0: Environment installation
 
@@ -87,8 +91,6 @@ conda activate torchone
 
    The number of matrices per study is dynamic, depending on the number of available clips.
 
----
-
 #### Step 2: Study-Level EchoAVC aggregator
 
 1. Run `EchoAVC/2_matrix_inference_direct.py`.
@@ -109,3 +111,11 @@ Each study-level prediction includes:
 
 - `EchoAVC_PRES`: probability of EchoAVC presence
 - `EchoAVC`: continuous EchoAVC score prediction
+
+---
+
+### Citation
+
+In case of use this repository, please cite:
+
+Lopez-Gutierrez, Pere, et al. "**Artificial intelligence for aortic valve calcium score quantification by echocardiography**." MedRxiv.
