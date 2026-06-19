@@ -41,7 +41,7 @@ def run(
         raise RuntimeError(f"No study subdirectories were found in: {src_root}")
 
     model = load_model(tasks_path, checkpoint_path, device)
-
+    print(model)
     temp_root_obj = tempfile.TemporaryDirectory(prefix="echo_temp_")
     temp_root = temp_root_obj.name
     log(f"Temp root: {temp_root}")
@@ -106,7 +106,7 @@ def run(
 
 
 if __name__ == "__main__":
-    src_root = r'\\NAS3_Z\all\BKP_PERE\BBDD_Datasets\TEST_ECHOAVC\VALVE_VIDS'
+    src_root = r'\\NAS3_Z\all\BKP_PERE\BBDD_Datasets\TEST_ECHOAVC\TEST_V\TEST\VALVE_VIDS'
     csv_quality = r'EchoAVC\data\quality.csv'
     csv_view = r'EchoAVC\data\view.csv'
     dest_root = r'EchoAVC\matrix_out'
