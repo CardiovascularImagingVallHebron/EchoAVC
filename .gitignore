@@ -7,3 +7,4 @@ view.csv
 *.pt
 *.pyc
 EchoAVC\__pycache__
+.vscode

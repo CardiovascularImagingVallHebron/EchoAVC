@@ -60,52 +60,52 @@ conda env create -f EchoAVC\content\torchone.yaml
 conda activate torchone
 ```
 
-#### Step 1: Build Study-Level Matrices from Videos
+#### Run the complete pipeline directly from videos
 
-1. Run `EchoAVC/1_video_to_matrix.py`.
-2. Set the following paths inside the script:
-   - `src_root`: directory containing study subfolders with valve-cropped `.avi` videos (`src_root/study/*.avi`)
-   - `csv_quality`: CSV with video-level quality predictions
-   - `csv_view`: CSV with video-level view predictions
-   - `dest_root`: output directory where study matrices will be saved
-   - `checkpoint_path`: **`echoavc_feature_extraction.pt` (download from the provided HuggingFace link)**
-3. The script:
-   - Extracts EchoAVC embeddings from each video
-   - Builds fixed-size matrices using metadata from both CSVs
+Use `EchoAVC/3_video_to_predictions_direct.py` to perform feature extraction, matrix construction, and study-level inference in one run. You do **not** need to run `1_video_to_matrix.py` and then `2_matrix_inference_direct.py` separately. Just to first 1 and then 2 if you want to save the embeddings.
 
-**Note:** Example CSV files are provided in `EchoAVC/data`.
+1. Download both model files from the [EchoAVC Hugging Face repository](https://huggingface.co/perolope/EchoAVC):
+   - `echoavc_feature_extraction.pt`
+   - `aggregator_model.pt`
+2. Open `EchoAVC/3_video_to_predictions_direct.py` and set the paths in the `if __name__ == "__main__":` section:
+   - `src_root`: directory containing one subfolder per study, with valve-cropped `.avi` videos (`src_root/<study>/*.avi`)
+   - `csv_quality`: CSV containing video-level quality predictions
+   - `csv_view`: CSV containing video-level view predictions
+   - `dest_root`: directory in which the generated study matrices will be saved
+   - `checkpoint_path`: path to `echoavc_feature_extraction.pt`
+   - `aggregator_model_path`: path to `aggregator_model.pt`
+   - `out_csv`: destination for the study-level prediction CSV
+   - `keep_temp`: set to `0` to delete temporary embeddings, or `1` to keep them
 
-4. Matrix Format
-   Each video clip is converted into a **774-dimensional feature vector** composed of:
-   - 768 PanEcho embedding features
-   - 1 video identifier
-   - 3 quality prediction values
-   - 1 numeric view label
-   - 1 view probability
+   Example:
 
-   Up to **30 rows** are selected per study, producing matrices of shape:
+   ```python
+   src_root = r"EchoAVC\data\videos_valve"
+   csv_quality = r"EchoAVC\data\quality_example.csv"
+   csv_view = r"EchoAVC\data\view_example.csv"
+   dest_root = r"EchoAVC\data\matrix_out"
+   checkpoint_path = r"EchoAVC\models\echoavc_feature_extraction.pt"
+   aggregator_model_path = r"EchoAVC\results\aggregator_model.pt"
+   out_csv = r"EchoAVC\results\EchoAVC_predictions.csv"
+   keep_temp = 0
+   ```
 
-   **`30 × 774`**
+3. From the repository root, run:
 
-   Matrices are saved as `.npy` files in: dest_root/<study>/matrixXXX.npy
+   ```bash
+   python EchoAVC/3_video_to_predictions_direct.py
+   ```
 
-   The number of matrices per study is dynamic, depending on the number of available clips.
+The script processes each study end to end and saves results incrementally. If it is restarted with an existing `out_csv`, studies already present in that file are skipped.
 
-#### Step 2: Study-Level EchoAVC aggregator
+**Note:** Example quality and view CSV files are provided in `EchoAVC/data`. Study names and video identifiers in these CSVs must match the input folder and video names.
 
-1. Run `EchoAVC/2_matrix_inference_direct.py`.
-2. Set the following paths inside the script:
-   - `matrix_root`: directory containing matrices generated in Step 1
-   - `model_path`: **`aggregator_model.pt` (download from the same HuggingFace link)**
-   - `out_csv`: output CSV path for study-level predictions
-3. The script:
-   - Loads all matrices
-   - Runs inference using the aggregation model
-   - Aggregates predictions at study level
+The generated matrix for each study contains up to 30 rows of 774 features (768 PanEcho embedding features, one video identifier, three quality values, one numeric view label, and one view probability). Matrices are saved as `dest_root/<study>/matrixXXX.npy`.
 
-4. Outputs:
-   - **Study-level predictions** → `EchoAVC_predictions.csv`
-   - **Matrix-level predictions** → `EchoAVC_predictions_by_matrix.csv`
+The script creates:
+
+- **Study-level predictions** → `EchoAVC_predictions.csv` (the path configured in `out_csv`)
+- **Matrix-level predictions** → `EchoAVC_predictions_by_matrix.csv`
 
 Each study-level prediction includes:
 
