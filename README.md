@@ -62,7 +62,7 @@ conda activate torchone
 
 #### Run the complete pipeline directly from videos
 
-Use `EchoAVC/3_video_to_predictions_direct.py` to perform feature extraction, matrix construction, and study-level inference in one run. You do **not** need to run `1_video_to_matrix.py` and then `2_matrix_inference_direct.py` separately. Just to first 1 and then 2 if you want to save the embeddings.
+Use `EchoAVC/3_video_to_predictions_direct.py` to perform feature extraction, matrix construction, and study-level inference in one run. You do **not** need to run `1_video_to_matrix.py` and then `2_matrix_inference_direct.py` separately. Just run 1* and then 2* if you want to save the video embeddings.
 
 1. Download both model files from the [EchoAVC Hugging Face repository](https://huggingface.co/perolope/EchoAVC):
    - `echoavc_feature_extraction.pt`
