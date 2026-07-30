@@ -1,7 +1,7 @@
 # EchoAVC: Artificial intelligence for aortic valve calcium score quantification by echocardiography
 
 <p align="center">
-    <a href="https://www.medrxiv.org/content/10.64898/2025.12.26.25343075v1" target="_blank"><img src="https://img.shields.io/badge/medRxiv-Paper-B31B1B?style=for-the-badge&logo=medrxiv&logoColor=white" alt="medRxiv"></a>
+    <a href="https://www.medrxiv.org/content/10.64898/2025.12.26.25343075v1" target="_blank"><img src="https://img.shields.io/badge/medRxiv-Paper-B31B1B?style=for-the-badge&logo=googlescholar&logoColor=white" alt="medRxiv"></a>
     <a href="https://github.com/CardiovascularImagingVallHebron/EchoAVC"><img src="https://img.shields.io/badge/GitHub-Code-4A90E2?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
 </p>
 
