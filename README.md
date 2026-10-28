@@ -13,7 +13,6 @@ EchoAVC is a framework for accurate, non-invasive detection and quantification o
 
 ## Repository Structure
 
-- **preprocessingDCM**: Converts echocardiography studies from DICOM (DCM) format to AVI. Requires a source folder (`root_folder`) containing DICOM files and an output folder (`root_out_folder`) where the converted AVI files will be saved. Use the conda environment defined in `prepro.yaml`.
 - **EchoAVC**: Identifies and quantifies aortic valve calcium. Feature extraction builds on [CarDS-Yale/PanEcho](https://github.com/CarDS-Yale/PanEcho); to aggregate video-level features at the study level, a transformer-based architecture is used.
 
 ## Model Weights and Repositories
@@ -31,18 +30,9 @@ git clone https://github.com/CardiovascularImagingVallHebron/EchoAVC.git
 cd EchoAVC
 ```
 
-### 2. Preprocessing DICOM to AVI
+### 2. Prepare the videos
 
-1. Create a conda environment from `preprocessingDCM/prepro.yaml`:
-   ```bash
-   conda env create -f preprocessingDCM/prepro.yaml
-   conda activate prepro
-   ```
-2. Prepare your input folder (`root_folder`) containing DICOM files.
-3. Specify an output folder (`root_out_folder`) where converted AVI files will be saved. Inside this folder, the script will create:
-   - `vids_resized`: Videos cropped to the echo cone and resized to 256x256.
-   - `vids_cropped`: Videos cropped to the echo cone at original resolution.
-4. Run the preprocessing script (see `preprocessingDCM` for specific instructions).
+Prepare the echocardiography videos with [TransformEchoDICOM](https://github.com/CardiovascularImagingVallHebron/TransformEchoDICOM). Follow that repository for preprocessing instructions before using the videos in this pipeline.
 
 ### 3. Aortic Valve Detection
 

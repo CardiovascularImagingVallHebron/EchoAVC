@@ -8,3 +8,6 @@ view.csv
 *.pyc
 EchoAVC\__pycache__
 .vscode
+pred_to_csv.ipynb
+/preprocessingDCM/
+/EchoAVC/__pycache__/

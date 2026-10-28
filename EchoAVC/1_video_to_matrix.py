@@ -106,9 +106,9 @@ def run(
 
 
 if __name__ == "__main__":
-    src_root = r'\\NAS3_Z\all\BKP_PERE\BBDD_Datasets\TEST_ECHOAVC\TEST_V\TEST\VALVE_VIDS'
-    csv_quality = r'EchoAVC\data\quality.csv'
-    csv_view = r'EchoAVC\data\view.csv'
+    src_root = r'EchoAVC\data\videos_valve'
+    csv_quality = r'EchoAVC\data\quality_example.csv'
+    csv_view = r'EchoAVC\data\view_example.csv'
     dest_root = r'EchoAVC\matrix_out'
     checkpoint_path = r'EchoAVC\data\echoavc_feature_extraction.pt'
     keep_temp = 0

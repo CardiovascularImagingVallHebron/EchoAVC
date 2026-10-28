@@ -245,12 +245,12 @@ def run(
 
 
 if __name__ == "__main__":
-    src_root = r"E:\DICOM\videos_valve"
+    src_root = r"EchoAVC\data\videos_valve"
 
-    csv_quality = r"EchoAVC\data\quality_leuven.csv"
-    csv_view = r"EchoAVC\data\view_leuven.csv"
+    csv_quality = r"EchoAVC\data\quality_example.csv"
+    csv_view = r"EchoAVC\data\view_example.csv"
 
-    dest_root = r"E:\DICOM\matrix_out"
+    dest_root = r"EchoAVC\data\matrix_out"
     checkpoint_path = r"EchoAVC\data\echoavc_feature_extraction.pt"
     aggregator_model_path = r"EchoAVC\results\aggregator_model.pt"
     out_csv = r"EchoAVC\results\EchoAVC_predictions.csv"
